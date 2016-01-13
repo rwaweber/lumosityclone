@@ -1,0 +1,17 @@
+
+body {
+	background: #111111;
+	color: white;
+}
+
+#circle {
+	
+	position: relative;
+	background: salmon;
+	border-radius: 50%;
+	text-align: center;
+	height: 64vh;
+	width: 36vw;
+
+}
+
