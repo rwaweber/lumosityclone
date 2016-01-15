@@ -4,27 +4,28 @@
 	--backgroundColor: #211111;
 	--fontColor: #211111;
 	--fnt: 'Asap';
-	
+
 }
 
 body {
-	
+
 	padding-top: 6%;
 
 	background: var(--backgroundColor);
 	color: white;
-	
+
 }
 
 #circle {
-	
+
 	position: relative;
 	margin: auto;
 	height: 5in;
 	width: 5in;
 	border-radius: 50%;
-	border: 6px solid purple;
-	
+	border: 6px dashed;
+	border-color: purple;
+
 	text-align: center;
 	line-height: 4.95in;
 	font-size: 8em;
@@ -35,17 +36,17 @@ body {
 }
 
 #response {
-	
+
 	padding-top: 50px;
-	
+
 	text-align: center;
 
 	color: black;
-	
+
 }
 
 .smallButton {
-	
+
 	display: inline-block;
 	margin-left: 10%;
 	margin-right: 10%;
@@ -53,13 +54,13 @@ body {
 	width: 1in;
 	border-radius: 50%;
 	border: 6px solid purple;
-	
+
 	text-align: center;
 	line-height: 1in;
 	font-size: 2em;
 	font-family: var(--fnt);
-	
+
 	background: var(--buttonColor);
 	color: var(--fontColor);
-	
+
 }
