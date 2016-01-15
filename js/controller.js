@@ -59,6 +59,7 @@ function begin(name) {
 	var fail = false;
 	var i = 0;
 	var input;
+	// 
 	var individualround = new Round(listOfColors[i]);
 	console.log(individualround);
 	listofrounds.push(individualround);
@@ -67,24 +68,26 @@ function begin(name) {
 		console.log('whiff');
 	    }
 	    else {
-		// scaling stub, not being used atm
-		// added for debug, to help us cheat :)
-		// retrieves user input
-		if(event.keyCode == 89|| event.keyCode != 74) {
+		// read key code
+		if(event.keyCode == 89|| event.keyCode == 74) {
 		    i++;
 		    console.log('yes!');
 		    input = true;
-		}if (event.keyCode == 78 || event.keyCode != 75) {
+		}if (event.keyCode == 78 || event.keyCode == 75) {
+		    i++;
 		    console.log('no!');
 		    input = false;
 		}
+		// reset counter for iterator loop
 		if (i > 5) {
 		    i = 0;
 		}
+		// if the user addresses the presented problem correctly
 		if (input == individualround.match) {
 		    player.score++;
 		    console.log('correct');
 		}
+		// incorrect
 		if (input != individualround.match) {
 		    console.log('wrong');
 		    document.removeEventListener('keydown', temporaryEventListener);
