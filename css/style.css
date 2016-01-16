@@ -23,8 +23,8 @@ body {
 	height: 5in;
 	width: 5in;
 	border-radius: 50%;
-	border: 6px dashed;
-	border-color: purple;
+	/*border: 6px dashed;
+	border-color: purple;*/
 
 	text-align: center;
 	line-height: 4.95in;
@@ -53,7 +53,6 @@ body {
 	height: 1in;
 	width: 1in;
 	border-radius: 50%;
-	border: 6px solid purple;
 
 	text-align: center;
 	line-height: 1in;
@@ -63,4 +62,8 @@ body {
 	background: var(--buttonColor);
 	color: var(--fontColor);
 
+}
+
+.smallButton:hover{
+	background: gray;
 }

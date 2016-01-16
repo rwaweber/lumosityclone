@@ -15,7 +15,7 @@ var User = function (name, score) {
 
 // essentially the logical module of the game
 var Round = function (color) {
-    this.correctcolor = color; // the correct color 
+    this.correctcolor = color; // the correct color
     // this is where the below method will be called
     this.displaycolor = displayDetermine(color);
     this.match = ((this.correctcolor === this.displaycolor) ? true : false);
@@ -26,32 +26,28 @@ function displayDetermine(colorString) {
     var x = Math.floor(Math.random()*10);
     // only generate based on whether or not the random number is greater than 5
     if(x < 5) {
-	var listOfColors = ['red', 'green', 'blue', 'purple','yellow', 'gray'];
-	// now we must remove the above colorString from the below list of colors.
-	for (var y in listOfColors) {
-	    if (listOfColors[y] === colorString) {
-		var omission = listOfColors.splice(y, 1);
-	    }
-	}
-	// now the dom background as the color of x in listOfColors
-	// dom.css.color = listOfColors[x];
-	return listOfColors[x];
-    }
-    else {
-	return colorString;
+    	var listOfColors = ['red', 'green', 'blue', 'purple','yellow', 'orange'];
+    	// now we must remove the above colorString from the below list of colors.
+    	for (var y in listOfColors) {
+    	    if (listOfColors[y] === colorString) {
+    	    var omission = listOfColors.splice(y, 1);
+    	    }
+    	}
+    	// now the dom background as the color of x in listOfColors
+    	// dom.css.color = listOfColors[x];
+    	return listOfColors[x];
+    } else {
+    return colorString;
     }
 };
 
 // ##################### controller
-
-var name = prompt('Please enter your name');
-var x = begin(name);
 function begin(name) {
     if (name != null && name != "") {
 	var player = new User(name, 0);
 	// the name should be retrieved from the controller
 	var listofrounds = []; // used for when we repeat the below list
-	var listOfColors = ['red', 'green', 'blue', 'purple','yellow', 'gray'];
+	var listOfColors = ['red', 'green', 'blue', 'purple','yellow', 'orange'];
 
 	// inside of the event listener I need to consider the following:
 	// the index of the listOfColors, assuming that I'm not looping
@@ -59,12 +55,20 @@ function begin(name) {
 	var fail = false;
 	var i = 0;
 	var input;
-	// 
+    //Selecting HTML divs on the dom with JS
+    var circle = document.querySelector('#circle');
+    var button = document.querySelectorAll('.smallButton');
+
 	var individualround = new Round(listOfColors[i]);
 	console.log(individualround);
 	listofrounds.push(individualround);
-	document.addEventListener('keydown', function temporaryEventListener(event) {
-	    if (event.keyCode != 89 && event.keyCode != 78 && event.keyCode != 74 && event.keyCode != 75) {
+
+    circle.innerHTML = individualround.correctcolor;
+    circle.style.color = individualround.displaycolor;
+    //circle.style.borderColor = individualround.displaycolor;
+
+    document.addEventListener('keydown', function temporaryEventListener(event) {
+        	    if (event.keyCode != 89 && event.keyCode != 78 && event.keyCode != 74 && event.keyCode != 75) {
 		console.log('whiff');
 	    }
 	    else {
@@ -92,11 +96,21 @@ function begin(name) {
 		    console.log('wrong');
 		    document.removeEventListener('keydown', temporaryEventListener);
 		    console.log(player);
+            alert("The game is over. You lasted for " + player.score + " rounds.");
+
 		}
 		individualround = new Round(listOfColors[i]);
-		console.log(individualround);
+
+        circle.innerHTML = individualround.correctcolor;
+        circle.style.color = individualround.displaycolor;
+        //circle.style.borderColor = individualround.displaycolor;
+
+        console.log(individualround);
 		listofrounds.push(individualround);
 	    }
-	});		
+	});
     }
 };
+
+var name = prompt('Please enter your name');
+begin(name);
